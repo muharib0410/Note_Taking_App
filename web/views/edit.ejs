@@ -1,0 +1,64 @@
+<%- include('header') %>
+<div class="container mt-5">
+  <form action="/update" method='post' class="form">
+      <input required type="hidden" name="updateId" value="<%= notes[0]['_id'] %>">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        >Note Title</label
+      >
+      <input required
+        type="text"
+        name="title"
+        value="<%= notes[0]['title']%>"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="Note Title"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        >Note Author</label
+      >
+      <input required
+        type="text"
+        name="author"
+        value="<%= notes[0]['author'] %> "
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="Note Author"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Date</label>
+      <input required name="date"
+      value="<%= notes[0]['date'] %> " type="date" class="form-control" id="exampleFormControlInput1" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Category</label>
+      <input required
+        type="text"
+        name="category"
+        value="<%= notes[0]['category'] %>"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="categories"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        >Note Body</label
+      >
+      <textarea
+        class="form-control"
+        name="body"
+        
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ><%= notes[0]['body'] %></textarea>
+    </div>
+    <button class="btn btn-success" type="submit">
+        Save Note ✅
+    </button>
+  </form>
+</div>
+<%- include('footer') %>

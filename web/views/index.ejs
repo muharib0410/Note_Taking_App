@@ -1,0 +1,67 @@
+<%- include('header') %>
+
+<div class="bg-gradient container-fluid mt-5">
+  <div class="row">
+    <% if(notes.length == 0){ %>
+    <h1 class="text-center">
+      Not available Notes 🚫 <br />
+      <br />
+      Please Create a new note ➕
+    </h1>
+    <% } else { %> <% for(let n = 0; n< notes.length; n++){ %>
+
+    <div class="col-sm-4 mb-2">
+      <div class="card bg-warning">
+        <div class="card-body">
+          <h5 class="card-title">Title: <%= notes[n]['title'] %></h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Author: <%= notes[n]['author'] %>
+          </h6>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Category: <%= notes[n]['category'] %>
+          </h6>
+          <hr />
+          <p class="card-text bg-light p-3"> Content:
+            <br />
+
+            <%= notes[n]['body'] %>
+          </p>
+          <hr />
+          <h6>Created at: <%= notes[n]['date'] %></h6>
+          <div class="d-flex justify-content-between">
+            <form action="/edit" method="post">
+              <input
+                type="hidden"
+                value="<%= notes[0]['_id']  %>"
+                name="note_id"
+              />
+              <button type="submit" class="card-link btn-primary btn m-2">
+                Edit ✒️
+              </button>
+            </form>
+            <form action="/delete" method="post">
+              <input
+                type="hidden"
+                value="<%= notes[0]['_id']  %>"
+                name="note_id"
+              />
+              <button type="submit" class="card-link btn-danger btn m-2">
+                delete 🪣
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% } %> <% } %>
+  </div>
+</div>
+
+<div class="create">
+  <a href="/create">
+    <button class="rounded-end btn btn-info">Create Note ➕</button>
+  </a>
+</div>
+
+<%- include('footer') %>
